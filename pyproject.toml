@@ -1,0 +1,18 @@
+[project]
+name = "technika11y-procurement-scanner"
+version = "0.1.0a0"
+description = "Scans a vendor intake record (accessibility, security, SBOM licenses, data handling) against a municipal procurement baseline and returns a GO / NO-GO."
+requires-python = ">=3.10"
+license = { text = "Apache-2.0" }
+keywords = ["procurement", "section-508", "sbom", "compliance", "security", "vendor-risk"]
+
+[project.scripts]
+procurement-scanner = "procurement.cli:main"
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+packages = ["procurement"]
