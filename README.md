@@ -11,6 +11,13 @@
 
 ---
 
+## Quick start
+
+```bash
+git clone https://github.com/technika11y/procurement-scanner && cd procurement-scanner
+PYTHONPATH=src python3 -m procurement.cli examples/vendor.json --as-of 2026-07-06
+```
+
 ## Status — read this first
 
 **Pre-alpha (`v0.1.0a0`). Honest state of the code:**
