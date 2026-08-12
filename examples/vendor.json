@@ -1,10 +1,30 @@
 {
   "name": "Acme Permits Portal",
-  "accessibility": { "vpat": true, "wcag_level": "AA" },
-  "security": { "mfa": true, "encryption_at_rest": true, "pen_test_date": "2026-03-01" },
-  "data": { "pii": true, "hosting": "us" },
+  "accessibility": {
+    "vpat": true,
+    "wcag_level": "AA",
+    "vpat_date": "2026-01-01"
+  },
+  "security": {
+    "mfa": true,
+    "encryption_at_rest": true,
+    "pen_test_date": "2026-03-01"
+  },
+  "data": {
+    "pii": true,
+    "hosting": "us",
+    "dpa": true
+  },
   "sbom": [
-    { "package": "react", "version": "18.2.0", "license": "MIT" },
-    { "package": "express", "version": "4.18.2", "license": "MIT" }
+    {
+      "package": "react",
+      "version": "18.2.0",
+      "license": "MIT"
+    },
+    {
+      "package": "express",
+      "version": "4.18.2",
+      "license": "MIT"
+    }
   ]
 }

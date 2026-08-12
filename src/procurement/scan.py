@@ -34,6 +34,11 @@ def scan(vendor, as_of=None, pentest_max_age_days=365):
     lvl = a.get("wcag_level")
     results.append(_r("wcag-aa", "pass" if lvl in ("AA", "AAA") else "fail",
         f"WCAG {lvl}" if lvl else "no WCAG level claimed"))
+    # A VPAT older than ~2 years likely predates WCAG 2.2 — request a current ACR.
+    vpat_date = a.get("vpat_date")
+    if a.get("vpat") and vpat_date and as_of and _days_between(as_of, vpat_date) > 730:
+        results.append(_r("vpat-freshness", "warn",
+            f"VPAT dated {vpat_date} is over 2 years old — request a current ACR against WCAG 2.2"))
 
     # Security baseline
     results.append(_r("mfa", "pass" if s.get("mfa") else "fail",
@@ -68,6 +73,10 @@ def scan(vendor, as_of=None, pentest_max_age_days=365):
     if data.get("pii"):
         host = data.get("hosting", "?")
         results.append(_r("pii-hosting", "pass" if host == "us" else "warn", f"PII hosted in {host}"))
+        # Handing PII to a processor without a Data Processing Agreement is a hard stop.
+        results.append(_r("dpa", "pass" if data.get("dpa") else "fail",
+            "Data Processing Agreement on file" if data.get("dpa")
+            else "PII is processed with no Data Processing Agreement (DPA) on file"))
 
     return results
 

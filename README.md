@@ -26,7 +26,9 @@ PYTHONPATH=src python3 -m procurement.cli examples/vendor.json --as-of 2026-07-0
 | Capability | State |
 |---|---|
 | Accessibility: VPAT/ACR present, WCAG AA claimed | ✅ works, tested |
+| Accessibility: VPAT staleness (>2y likely predates WCAG 2.2) | ✅ works, tested |
 | Security: MFA, encryption at rest, pen-test recency (dated) | ✅ works, tested |
+| Data: **DPA required when the vendor processes PII** (hard fail) | ✅ works, tested |
 | SBOM: flag disallowed licenses (fail) / unknown licenses (warn) | ✅ works, tested |
 | Data: PII hosting location check | ✅ works |
 | GO / NO-GO verdict (any `fail` ⇒ NO-GO) | ✅ works, tested |
